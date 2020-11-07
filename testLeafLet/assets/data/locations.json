@@ -1,0 +1,14 @@
+{
+    "locations": [
+        {
+            "name": "Herron",
+            "address": "735 West New York Street, Indianapolis, IN 46202",
+            "coords": [39.7710012, -86.1712865]
+        },
+        {
+            "name": "Campus Center",
+            "address": "420 University Blvd, Indianapolis, IN 46202",
+            "coords": [39.7738313, -86.1763166]
+        }
+    ]
+}
