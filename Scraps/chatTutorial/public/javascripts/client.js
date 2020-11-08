@@ -1,5 +1,6 @@
-socket.emit('new user');
 const chatbox = document.querySelector(".chatbox");
+
+socket.emit('new user');
 
 socket.on('new user', user=> {
     chatbox.innerHTML += `<p>User ${user.id} has joined the chat.</p>`;

@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('platformtutorial:server');
+var debug = require('debug')('tictactoeonline:server');
 var http = require('http');
 
 /**
@@ -21,34 +21,36 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+server.currentID = 0;
+let players = [];
+let turn = 1;
+
 const io = require('socket.io')(server);
 
-server.currentUserId = 1;
-let players = [];
-
 io.on('connection', socket=> {
-  // console.log(`User ${socket.player.id++} has joined the game.`);
-
+  // console.log(`User has joined the game.`);
   socket.on('new player', ()=> {
-    socket.stats = { id: server.currentUserId++, pos: {x: 100, y: 450}};
-    players.push(socket.stats);
-    socket.emit('set userID', socket.stats.id);
-    socket.broadcast.emit('new player', socket.stats);
-  });
-  
-  socket.on('disconnect', () => {
-    socket.broadcast.emit('player left', socket.stats);
-    const index = players.findIndex(curP=> curP.id == socket.stats.id);
-    players.splice(index, 1);
-    // console.log(`User has left the game. ${new Date().getHours()}:${new Date().getMinutes()}`);
-  });
+    socket.stats = {id: server.currentID++, spaces: []};
+    io.emit('new player', socket.stats);
+    socket.emit('set stats', socket.stats);
+    if(socket.stats.id < 2) {
+      players.push(socket.stats);
+    }
+    io.emit('players', players);
+    io.emit('turn', turn);
+  })
 
-  socket.on('player moved', newPos=> {
-    socket.stats.pos = newPos;
-    const index = players.findIndex(curP=> curP.id == socket.stats.id);
-    players.splice(index, 1, socket.stats);
-    socket.broadcast.emit('player moved', players);
-  });
+  socket.on('player played', data=> {
+    players = data.players;
+    turn = data.turn;
+    io.emit('players', data.players);
+    io.emit('turn', data.turn);
+  })
+
+  socket.on('disconnect', ()=> {
+    // console.log(`User has left the game.`);
+    io.emit('player left', socket.stats);
+  })
 });
 
 /**

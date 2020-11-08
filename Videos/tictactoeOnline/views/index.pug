@@ -1,0 +1,23 @@
+include layout
+
+body
+  .game
+    .space(data-col="1" data-row="1" data-topbottom="true" data-bottomtop="false")
+    .space(data-col="2" data-row="1" data-topbottom="false" data-bottomtop="false")
+    .space(data-col="3" data-row="1" data-topbottom="false" data-bottomtop="true")
+
+    .space(data-col="1" data-row="2" data-topbottom="false" data-bottomtop="false")
+    .space(data-col="2" data-row="2" data-topbottom="true" data-bottomtop="true")
+    .space(data-col="3" data-row="2" data-topbottom="false" data-bottomtop="false")
+
+    .space(data-col="1" data-row="3" data-topbottom="false" data-bottomtop="true")
+    .space(data-col="2" data-row="3" data-topbottom="false" data-bottomtop="false")
+    .space(data-col="3" data-row="3" data-topbottom="true" data-bottomtop="false")
+  
+  h2.winner
+
+    script(src="/socket.io/socket.io.js")
+    script.
+      const socket = io();
+    script(src="/js/game.js")
+    script(src="/js/client.js")

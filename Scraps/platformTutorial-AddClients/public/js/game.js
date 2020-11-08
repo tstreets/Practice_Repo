@@ -70,8 +70,11 @@ function create() {
     platforms.create(50, 250, 'ground');
     platforms.create(750, 220, 'ground');
 
-    player = this.physics.add.sprite(100, 450, 'player');
-    player.setCollideWorldBounds(true);
+    players = this.physics.add.staticGroup();
+
+
+    user = this.physics.add.sprite(100, 450, 'player');
+    user.setCollideWorldBounds(true);
     // player.setBounce(0.2);
 
     this.anims.create({
@@ -103,7 +106,7 @@ function create() {
         repeat: -1 
     });
 
-    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(user, platforms);
 
     Client.newPlayer();
 }
@@ -118,19 +121,37 @@ function update() {
     cursors = this.input.keyboard.createCursorKeys();
 
     if(cursors.left.isDown) {
-        player.setVelocityX(-160);
-        player.anims.play('left', true);
+        Client.playerMoved({x: user.x, y: user.y});
+        user.setVelocityX(-160);
+        user.anims.play('left', true);
     }
     else if(cursors.right.isDown) {
-        player.setVelocityX(160);
-        player.anims.play('right', true);
+        Client.playerMoved({x: user.x, y: user.y});
+        user.setVelocityX(160);
+        user.anims.play('right', true);
     }
     else {
-        player.setVelocityX(0);
-        player.anims.play('turn');
+        Client.playerMoved({x: user.x, y: user.y});
+        user.setVelocityX(0);
+        user.anims.play('turn');
     }
 
-    if((cursors.space.isDown || cursors.up.isDown) && player.body.touching.down) {
-        player.setVelocityY(-330);
+    if((cursors.space.isDown || cursors.up.isDown) && user.body.touching.down) {
+        Client.playerMoved({x: user.x, y: user.y});
+        user.setVelocityY(-330);
     }
+}
+
+function updatePlayers(allPlayers) {
+    players.clear(true, true);
+    for(let player of allPlayers) {
+        if(player.id != userID) {
+            players.create(player.pos.x, player.pos.y, 'player');
+        }
+    }
+    // const currentPlayer = players.find(curPlayer=> curPlayer.id == player.id);
+    // if(currentPlayer) {
+    //     players.remove(currentPlayer);
+        // players.create(player.pos.x, player.pos.y, 'player');
+    // }
 }
