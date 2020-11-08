@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.site {
+    min-height: 100%;
+}
+
+.game {
+    width: 800px;
+    height: 550px;
+}
+
+.chat {
+    width: 250px;
+    height: 550px;
+}
+
+.output {
+    height: 500px;
+}
+
+.screen {
+    width: 550px;
+    height: 550px;
+}
+
+.space {
+    width: 183.33px;
+    height: 183.33px;
+    font-size: 100px;
+}
+
