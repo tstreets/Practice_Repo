@@ -32,7 +32,7 @@ function spaceClicked() {
     if(this.dataset.marked != "true") {
         this.dataset.marked = "true";
         gm.players[((gm.turn - 1) % 2)].spaces.push(this);
-        outputMessage({text: `${gm.players[((gm.turn - 1) % 2)].name} placed an ${((gm.turn - 1) % 2) ? "O" : "X"} on space ${this.dataset.row}${this.dataset.col}`});
+        outputMessage({text: `<b>${gm.players[((gm.turn - 1) % 2)].name}</b> placed an ${((gm.turn - 1) % 2) ? "O" : "X"} on space ${this.dataset.row}${this.dataset.col}`});
         piecePlayed();
     }
 }
