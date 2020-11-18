@@ -6,3 +6,6 @@
 
 ## Display items from cart
 [File](views/cart/index.php)
+
+## Database Connection
+[File](config/config.php)
