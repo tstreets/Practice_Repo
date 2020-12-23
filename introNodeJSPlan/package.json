@@ -1,0 +1,20 @@
+{
+  "name": "introNodeJSPlan",
+  "version": "1.0.0",
+  "description": "This course is going to cover the basics of working in node.js. Various topics will be covered including deploying projects, git control, routing, utilizing modules, websockets, frameworks, and view engines.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "bootstrap-icons": "^1.2.1",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "socket.io": "^3.0.4"
+  }
+}

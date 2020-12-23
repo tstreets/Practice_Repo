@@ -1,0 +1,16 @@
+.name {
+    font-size: 12px;
+    text-shadow: 1px 1px #252525;
+}
+
+.ally {
+    color: #13FF24;
+}
+
+.enemy {
+    color: #FF2810;
+}
+
+.me {
+    color: #3045FF;
+}

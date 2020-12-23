@@ -2,7 +2,7 @@ let player;
 
 const SceneA = new Phaser.Class({
     Extends: Phaser.Scene,
-    Initialize: function SceneA() {
+    initialize: function SceneA() {
         Phaser.Scene.call(this, {key: 'SceneA'});
     },
 

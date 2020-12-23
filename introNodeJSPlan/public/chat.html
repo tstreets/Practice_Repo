@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Node.js</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class='navbar navbar-expand-md justify-content-start navbar-dark bg-dark'>
+        <a class='navbar-brand' href="/">Intro to Node.js</a>
+        <button class='navbar-toggler ml-auto' 
+        type='button' data-toggle='collapse'
+        data-target='#mobileNav'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='navbar-collapse collapse' id='mobileNav'>
+            <a class='nav-link text-white' href="/">Home</a>
+            <a class='nav-link text-white' href="about">About</a>
+            <a class='nav-link text-white' href="contact">Contact</a>
+            <a class='nav-link text-white' href="chat">Chat</a>
+        </div>
+    </nav>
+    <h1>Chat</h1>
+    <form id='chat-box' class="border w-75 d-flex flex-column">
+        <p id='messages' class='overflow-auto'></p>
+        <div class='mt-auto w-100 d-flex'>
+            <input class='form-control' type="text" name='msg' placeholder="Message...">
+            <input class='btn btn-secondary' type="submit" name='msg' value="Send">
+        </div>
+    </form>
+
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
